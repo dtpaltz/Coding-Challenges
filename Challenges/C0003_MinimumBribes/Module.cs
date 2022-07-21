@@ -13,7 +13,13 @@ namespace Challenges.C0003_MinimumBribes
             {
                 if (q[c - 1] != c)
                 {
-                    int e = q.IndexOf(c);
+                    int e = c - 1;
+
+                    while (q[e] != c)
+                    {
+                        e--;
+                    }
+
                     int d = c - (e + 1);
 
                     totalBribes += d;
@@ -23,10 +29,7 @@ namespace Challenges.C0003_MinimumBribes
                         largestNumberBribes = d;
                     }
 
-                    for (int i = e; i < (c - 1); i++)
-                    {
-                        (q[i], q[i + 1]) = (q[i + 1], q[i]);
-                    }
+                    q.RemoveAt(e);
                 }
             }
 

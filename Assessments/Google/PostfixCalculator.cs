@@ -23,36 +23,36 @@
 
                 if (thisCh.Equals("*"))
                 {
-                    arg2 = double.Parse((String)stackArgOp.Pop());
-                    arg1 = double.Parse((String)stackArgOp.Pop());
+                    arg2 = double.Parse(stackArgOp.Pop());
+                    arg1 = double.Parse(stackArgOp.Pop());
                     ans = arg1 * arg2;
                     stackArgOp.Push(ans.ToString());
                 }
                 else if (thisCh.Equals("/"))
                 {
-                    arg2 = double.Parse((String)stackArgOp.Pop());
-                    arg1 = double.Parse((String)stackArgOp.Pop());
+                    arg2 = double.Parse(stackArgOp.Pop());
+                    arg1 = double.Parse(stackArgOp.Pop());
                     ans = arg1 / arg2;
                     stackArgOp.Push(ans.ToString());
                 }
                 else if (thisCh.Equals("^"))
                 {
-                    arg2 = double.Parse((String)stackArgOp.Pop());
-                    arg1 = double.Parse((String)stackArgOp.Pop());
+                    arg2 = double.Parse(stackArgOp.Pop());
+                    arg1 = double.Parse(stackArgOp.Pop());
                     ans = Math.Pow(arg1, arg2);
                     stackArgOp.Push(ans.ToString());
                 }
                 else if (thisCh.Equals("+"))
                 {
-                    arg2 = double.Parse((String)stackArgOp.Pop());
-                    arg1 = double.Parse((String)stackArgOp.Pop());
+                    arg2 = double.Parse(stackArgOp.Pop());
+                    arg1 = double.Parse(stackArgOp.Pop());
                     ans = arg1 + arg2;
                     stackArgOp.Push(ans.ToString());
                 }
                 else if (thisCh.Equals("-"))
                 {
-                    arg2 = double.Parse((String)stackArgOp.Pop());
-                    arg1 = double.Parse((String)stackArgOp.Pop());
+                    arg2 = double.Parse(stackArgOp.Pop());
+                    arg1 = double.Parse(stackArgOp.Pop());
                     ans = arg1 - arg2;
                     stackArgOp.Push(ans.ToString());
                 }

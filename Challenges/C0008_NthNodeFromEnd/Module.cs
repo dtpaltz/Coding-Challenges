@@ -4,7 +4,7 @@ namespace Challenges.C0008_NthNodeFromEnd
 {
     internal class Module
     {
-        public LinkedListNode<int> NthToLast(LinkedListNode<int> head, int n)
+        public LinkedListNode<int>? NthToLast(LinkedListNode<int> head, int n)
         {
             // If list does not exist or if there are no elements in the list,return NULL
             if (head == null || n < 1)

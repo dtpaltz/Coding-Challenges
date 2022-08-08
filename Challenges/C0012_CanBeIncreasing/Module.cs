@@ -6,52 +6,48 @@ namespace Challenges.C0012_CanBeIncreasing
     {
         public bool CanBeIncreasing(int[] nums)
         {
-            int n = nums.Length;
+            int numCount = nums.Length;
+
+            if (numCount < 2)
+            {
+                return false;
+            }
 
             // Stores the count of numbers that
             // are needed to be removed
-            int count = 0;
+            int needToRemoveCount = 0;
 
             // Store the index of the element
             // that needs to be removed
-            int index = -1;
+            int indexToRemove = -1;
 
-            // Traverse the range [1, N - 1]
-            for (int i = 1; i < n; i++)
+            for (int i = 1; i < numCount; i++)
             {
-
-                // If arr[i-1] is greater than
-                // or equal to arr[i]
                 if (nums[i - 1] >= nums[i])
                 {
-
-                    // Increment the count by 1
-                    count++;
-
-                    // Update index
-                    index = i;
+                    needToRemoveCount++;
+                    indexToRemove = i;
                 }
             }
 
             // If count is greater than one
-            if (count > 1)
+            if (needToRemoveCount > 1)
                 return false;
 
             // If no element is removed
-            if (count == 0)
+            if (needToRemoveCount == 0)
                 return true;
 
-            // If only the last or the
-            // first element is removed
-            if (index == n - 1 || index == 1)
+            // If only the last OR the first element is removed
+            if (indexToRemove == numCount - 1 || indexToRemove == 1)
                 return true;
 
             // If a[index] is removed
-            if (nums[index - 1] < nums[index + 1])
+            if (nums[indexToRemove - 1] < nums[indexToRemove + 1])
                 return true;
 
             // If a[index - 1] is removed
-            if (nums[index - 2] < nums[index])
+            if (nums[indexToRemove - 2] < nums[indexToRemove])
                 return true;
 
             return false;

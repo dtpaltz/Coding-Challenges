@@ -22,8 +22,8 @@ namespace Challenges.C0015_Third_Max
                 }
             }
 
-            // Find first largest element
-            int second = -1 * first;
+            // Find second largest element
+            int second = -first;
             for (int i = 0; i < nums.Length; i++)
             {
                 int n = nums[i];
@@ -33,8 +33,8 @@ namespace Challenges.C0015_Third_Max
                 }
             }
 
-            // Find first largest element
-            int third = -1 * second;
+            // Find third largest element
+            int third = -second;
             for (int i = 0; i < nums.Length; i++)
             {
                 int n = nums[i];

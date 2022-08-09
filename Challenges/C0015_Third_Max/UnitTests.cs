@@ -35,5 +35,14 @@ namespace Challenges.C0015_Third_Max
 
             Assert.That(m.ThirdMax(arr), Is.EqualTo(1));
         }
+
+        [Test]
+        public void Test4()
+        {
+            var m = new Module();
+            var arr = new int[] { 1, 1, 2 };
+
+            Assert.That(m.ThirdMax(arr), Is.EqualTo(2));
+        }
     }
 }

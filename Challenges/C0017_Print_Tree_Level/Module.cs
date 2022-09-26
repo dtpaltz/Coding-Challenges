@@ -4,60 +4,86 @@ namespace Challenges.C0017_Print_Tree_Level
 {
     class Node
     {
-        public Node left;
-        public Node right;
-        public int val;
+        public Node? left;
+        public Node? right;
+        public int data;
+
         public Node(int val)
         {
-            this.val = val;
+            this.data = val;
             this.left = null;
             this.right = null;
         }
     }
 
 
-
-
     class TreePrinter
     {
         Dictionary<int, List<Node>> cache = new Dictionary<int, List<Node>>();
 
-        public void PrintLevel(Node root, int targetLevel)
+        public string PrintLevel(Node root, int targetLevel)
         {
-            List<Node> levelNodes;
+            if (cache.Count == 0)
+            {
+                cache.Add(0, new List<Node>() { root });
+            }
+
+            List<Node>? levelNodes = null;
             int startLevel;
 
-            for (startLevel = targetLevel; !cache.TryGetValue(startLevel, out levelNodes); startLevel--)
+            for (startLevel = targetLevel; startLevel >= 0; startLevel--)
             {
-                cache.Add(startLevel, new List<Node>() { });
-
-                if (startLevel == 0)
+                if (cache.TryGetValue(startLevel, out levelNodes))
                 {
                     break;
                 }
             }
 
-            if (startLevel == 0)
+            if (levelNodes != null && startLevel < targetLevel)
             {
-                CacheToLevel(root, startLevel, targetLevel);
+                CacheToLevel(levelNodes, startLevel, targetLevel);
                 cache.TryGetValue(targetLevel, out levelNodes);
             }
 
-            foreach (Node n in levelNodes)
-            {
-                Debug.Write(n.val + " ");
-            }
-
-            Debug.WriteLine("");
+            var result = GetLevelString(levelNodes);
+            return result;
         }
 
-        private void CacheToLevel(Node root, int currLevel, int targetLevel)
+        private string GetLevelString(List<Node> levelNodes)
         {
-            if (root == null || currLevel > targetLevel) return;
+            string result = "";
+            foreach (Node n in levelNodes)
+            {
+                result += $"{n.data}, ";
+            }
 
-            cache[currLevel].Add(root);
-            CacheToLevel(root.left, currLevel + 1, targetLevel);
-            CacheToLevel(root.right, currLevel + 1, targetLevel);
+            return result.Trim();
+        }
+
+        private void CacheToLevel(List<Node> levelNodes, int currLevel, int targetLevel)
+        {
+            if (currLevel >= targetLevel)
+            {
+                return;
+            }
+
+            int nextLevel = currLevel + 1;
+
+            if (!cache.ContainsKey(nextLevel))
+            {
+                cache.Add(nextLevel, new List<Node>());
+            }
+
+            foreach (var item in levelNodes)
+            {
+                if (item.left != null)
+                    cache[nextLevel].Add(item.left);
+
+                if (item.right != null)
+                    cache[nextLevel].Add(item.right);
+            }
+
+            CacheToLevel(cache[nextLevel], nextLevel, targetLevel);
         }
     }
 }

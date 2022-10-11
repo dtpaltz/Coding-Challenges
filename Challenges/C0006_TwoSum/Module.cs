@@ -1,13 +1,10 @@
-﻿using System.Diagnostics;
-
-namespace Challenges.C0006_TwoSum
+﻿namespace Challenges.C0006_TwoSum
 {
     internal class Module
     {
         public int[] TwoSum(int[] nums, int target)
         {
-
-            Dictionary<int, int> deltas = new Dictionary<int, int>(); //key == deta, value == index
+            Dictionary<int, int> deltas = new Dictionary<int, int>(); //key == delta, value == index
             int[] result = new int[2];
 
             for (int i = 0; i < nums.Length; i++)

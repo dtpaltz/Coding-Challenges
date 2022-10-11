@@ -1,4 +1,4 @@
-﻿namespace Challenges.A001_TwoSum
+﻿namespace Challenges.A002_AddTwoNumbers
 {
     internal class Module
     {

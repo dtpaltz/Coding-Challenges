@@ -1,6 +1,6 @@
 using NUnit.Framework;
 
-namespace Challenges.A001_TwoSum
+namespace Challenges.A002_AddTwoNumbers
 {
     public class Tests
     {

@@ -6,20 +6,22 @@
         {
             int result = 0;
 
-            var charCache = new HashSet<char>();
-
-            for (int i = 0; i < s.Length; i++)
+            for (int startIdx = 0; startIdx < s.Length; startIdx++)
             {
-                char nextCahr = s[i];
+                var charCache = new HashSet<char>();
 
-                if (charCache.Contains(nextCahr))
+                for (int i = startIdx; i < s.Length; i++)
                 {
-                    result = Math.Max(result, charCache.Count);
-                    charCache = new HashSet<char>();
-                    continue;
-                }
+                    char nextCahr = s[i];
 
-                charCache.Add(nextCahr);
+                    if (charCache.Contains(nextCahr))
+                    {
+                        break;
+                    }
+
+                    charCache.Add(nextCahr);
+                    result = Math.Max(result, charCache.Count);
+                }
             }
 
             return result;

@@ -17,7 +17,7 @@
                 }
             }
 
-            return null;
+            return "";
         }
 
         public static bool IsPalindrome(string value)

@@ -1,24 +1,51 @@
-﻿namespace Challenges.A002_AddTwoNumbers
+﻿using CommonLibrary.LinkedList;
+
+namespace Amazon.A002_AddTwoNumbers
 {
     internal class Module
     {
-        public int[] TwoSum(int[] nums, int target)
+        public ListNode AddTwoNumbers(ListNode l1, ListNode l2)
         {
-            var result = new int[2];
-            var deltaCache = new Dictionary<int, int>();
+            var result = new ListNode(0);
+            var currResultDigit = result;
 
-            for (int i = 0; i < nums.Length; i++)
+            var digit1Node = l1;
+            var digit2Node = l2;
+            int carryOne = 0;
+
+            while (true)
             {
-                if (deltaCache.ContainsKey(nums[i]))
+                int resultDigit = 0;
+                int digit1 = digit1Node == null ? 0 : digit1Node.val;
+                int digit2 = digit2Node == null ? 0 : digit2Node.val;
+
+                if (digit1 == 0 && digit2 == 0)
                 {
-                    result = new int[] { deltaCache[nums[i]], i };
                     break;
                 }
+                else
+                {
+                    resultDigit = digit1 + digit2;
+                }
 
-                deltaCache.TryAdd(target - nums[i], i);
+                resultDigit += carryOne;
+                carryOne = resultDigit > 9 ? 1 : 0;
+                resultDigit %= 10;
+
+                currResultDigit.val = resultDigit;
+
+                digit1Node = digit1Node?.next;
+                digit2Node = digit2Node?.next;
+
+                if (digit1Node != null || digit2Node != null)
+                {
+                    currResultDigit.next = new ListNode(0);
+                    currResultDigit = currResultDigit.next;
+                }
             }
 
             return result;
+
         }
     }
 }

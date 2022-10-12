@@ -1,4 +1,4 @@
-﻿namespace Challenges.A001_TwoSum
+﻿namespace Amazon.A001_TwoSum
 {
     internal class Module
     {

@@ -1,6 +1,7 @@
+using CommonLibrary.LinkedList;
 using NUnit.Framework;
 
-namespace Amazon.A001_TwoSum
+namespace Amazon.A003_Longest_Substring_Without_Repeating_Characters
 {
     public class Tests
     {
@@ -13,8 +14,9 @@ namespace Amazon.A001_TwoSum
         public void Test1()
         {
             Module m = new Module();
+            string input = "abcabcbb";
 
-            m.TwoSum(new int[] { 3, 2, 4 }, 6);
+            m.LengthOfLongestSubstring(input);
         }
     }
 }

@@ -1,6 +1,7 @@
+using CommonLibrary.LinkedList;
 using NUnit.Framework;
 
-namespace Challenges.A002_AddTwoNumbers
+namespace Amazon.A002_AddTwoNumbers
 {
     public class Tests
     {
@@ -14,7 +15,10 @@ namespace Challenges.A002_AddTwoNumbers
         {
             Module m = new Module();
 
-            m.TwoSum(new int[] { 3, 2, 4 }, 6);
+            var node1 = new ListNode(2, new ListNode(4, new ListNode(3, null)));
+            var node2 = new ListNode(5, new ListNode(6, new ListNode(4, null)));
+
+            m.AddTwoNumbers(node1, node2);
         }
     }
 }

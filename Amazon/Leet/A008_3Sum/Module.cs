@@ -4,32 +4,60 @@
     {
         public IList<IList<int>> ThreeSum(int[] nums)
         {
-            List<List<int>> ans = new List<List<int>>();
+            //this is where final result will live.
+            var reslist = new List<IList<int>>();
+            //sort the array so search is quicker
             Array.Sort(nums);
-            int n = nums.Length;
-
-            for (int i = 0; i < n; i++)
+            var pre = 0; //keep track previous number
+            //start from end of array
+            for (var i = nums.Length - 1; i > 1; i--)
             {
-                int p = i + 1, q = n - 1;
-                while (p < q)
+                //if not at the start of loop and previous number equals to current number
+                //no need to continue, the triplet (if there is one) will be the same
+                if (i != nums.Length - 1 && nums[i] == pre)
                 {
-                    if (nums[p] + nums[q] == -nums[i])
-                    {
-                        ans.Add(new List<int>() { nums[i], nums[p], nums[q] });
-
-                        while (p + 1 < q && nums[p + 1] == nums[p]) p++;
-                        while (q - 1 > p && nums[q - 1] == nums[q]) q--;
-
-                        p++; q--;
-                    }
-                    else if (nums[p] + nums[q] < -nums[i]) p++;
-                    else q--;
+                    continue;
                 }
-
-                while (i + 1 < n && nums[i + 1] == nums[i]) i++;
+                //calculate how many we still need to compose the triplet
+                var remain = 0 - nums[i];
+                //update the previous number
+                pre = nums[i];
+                //the previous tracking for inner loop
+                var prev = 0;
+                for (var j = i - 1; j > 0; j--)
+                {
+                    //same as outer loop, if number is same
+                    //would yield same triplet, skip it.
+                    if (j != i - 1 && nums[j] == prev)
+                    {
+                        continue;
+                    }
+                    //calculate the last number needed
+                    var last = remain - nums[j];
+                    //update the previous
+                    prev = nums[j];
+                    //binary search the last number
+                    var exist = Array.BinarySearch<int>(nums, 0, j, last);
+                    //if found add the triplet
+                    if (exist >= 0)
+                    {
+                        reslist.Add(new List<int>() { nums[i], nums[j], last });
+                    }
+                }
             }
-
-            return (IList<IList<int>>)ans;
+            return reslist;
         }
+
+
+
+
+
+
+
+
+
+
+
+
     }
 }

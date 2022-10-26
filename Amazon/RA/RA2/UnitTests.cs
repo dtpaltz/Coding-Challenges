@@ -14,8 +14,6 @@ namespace Amazon.RA2
         {
             Module m = new Module();
             var logs = new string[] { "" };
-
-            m.ReorderData(logs);
         }
     }
 }

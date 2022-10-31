@@ -28,5 +28,19 @@
             this.val = val;
             this.next = next;
         }
+
+        public List<int> ToList()
+        {
+            var result = new List<int>();
+            var pt = this;
+
+            while (pt != null)
+            {
+                result.Add(pt.val);
+                pt = pt.next;
+            }
+
+            return result;
+        }
     }
 }

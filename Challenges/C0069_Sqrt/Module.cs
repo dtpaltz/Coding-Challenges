@@ -29,11 +29,5 @@ namespace Challenges.C0069_Sqrt
 
             return end;
         }
-
-
-
-
-
-
     }
 }

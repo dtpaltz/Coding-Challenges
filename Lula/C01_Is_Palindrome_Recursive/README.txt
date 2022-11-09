@@ -1,0 +1,1 @@
+﻿Given string return the first unique character, if any, from that string
